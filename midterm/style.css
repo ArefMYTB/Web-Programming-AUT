@@ -1,0 +1,183 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(120deg, #097969, #023020);
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+.container {
+    width: 70%;
+    min-height: 70%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: rgb(68, 122, 89);
+    opacity: 0.8;
+    padding: 5px;
+    z-index: 100;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+/* a box pops on when ever an error occures */
+.error_handling{
+    position: absolute;
+    width: 560px;
+    top: 10%;
+    left: 10%;
+    background: #f6d8ac;
+    border-radius: 10px;
+}
+/* the error message in the box */
+.error_handling .error_access{
+    color: #ff0000;
+    max-width: 350px;
+    word-wrap: break-word;
+    margin: 15px;
+}
+
+/* ---------------------------------------Right part------------------------------------ */
+/* This part gets username and have submit button. */
+.right{
+    position: absolute;
+    max-width: 300px;
+    height: 300px;
+    top: 20%;
+    left: 65%;
+    background: #f6d8ac;
+    border-radius: 10px;
+    padding: 5px;
+}
+/* simple message on top */
+.right h1{
+    text-align: center;
+}
+/* as a container for text input and submit button */
+/* box-sizing specifise the behavior of with and height */
+.right .form{
+    box-sizing: border-box;
+}
+/* as a container for text input */
+.form .text_field{
+    position: relative;
+    margin: 30px;
+}
+/* the input box for getting username */
+.text_field input{
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 90%;
+    padding: 0 5px;
+    height: 40px;
+}
+/* the label writen inside of text field */
+.text_field label{
+    position: absolute;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    top: 20%;
+    left: 17px;
+    color: #adadad;
+    transition: 0.5s;
+}
+/* different color and position of label when user wants to type username inside of text input */
+.text_field input:focus ~ label,
+.text_field input:valid ~ label{
+    top: -20px;
+    color: #ff0000;
+}
+/* submit button */
+input[type="submit"]{
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 70%;
+    height: 50px;
+    border: 1px solid;
+    background: #26d96b;
+    border-radius: 25px;
+    font-size: 18px;
+    color: #e9f4fb;
+    cursor: pointer;
+}
+/* when cursor is on the submit button */
+input[type="submit"]:hover{
+    border-color: #2691d9;
+    transition: 0.5s;
+}
+/* simple message */
+.right h2{
+    font-size: 15px;
+    text-align: center;
+}
+
+/* ---------------------------------------Left part------------------------------------ */
+/* Left part is where all the information is going to be. */
+.left{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    position: absolute;
+    width: 550px;
+    height: 300px;
+    top: 20%;
+    left: 10%;
+    background: #f6d8ac;
+    border-radius: 10px;
+    padding: 5px;
+}
+/* as a container for user image */
+.card-image{
+    position: relative;
+    height: 150px;
+    width: 150px;
+    padding: 8px;
+}
+/* the user image with a single blue circle around */
+.card-image .img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #2691d9;
+}
+/* containing name, blog and location */
+.description{
+    flex-basis: 50%;
+}
+
+/* the blog info */
+.description .detail{
+    font-size: 12px;
+    word-wrap: break-word
+}
+/* the location info */
+.description .detail2{
+    font-size: 14px;
+}
+/* the bio part */
+.bio{
+    width: 100%;
+    /* flex-basis: 30%; */
+    flex-shrink: initial;
+}
+/* bio text */
+.bio .bio-text{
+    /* max-width: 350px; */
+    width: 100%;
+    word-wrap: break-word
+}
