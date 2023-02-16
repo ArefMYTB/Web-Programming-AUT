@@ -1,0 +1,425 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+  <title>One Pice</title> 
+  <style> 
+
+    .menu-container {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background-color: burlywood;
+    }
+
+    .menu {
+      right: 20px; 
+      top: 10px; 
+    }
+
+    .overlay {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      width: 100%;
+      /* overflow: hidden; */
+      display: none;
+      transition: .5s ease;
+      background-color: #008CBA;
+    }
+
+    .menu-container:hover + .overlay {
+      display: block;
+    }
+
+    .text {
+      color: white;
+      font-size: 20px;
+      position: relative;
+      padding: 5%;
+      text-align: center;
+    }
+
+    #container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    #header {
+        background-image: url('pics/12.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 550px;
+        text-align: center;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .header-button {
+        background-color: #4CAF50; 
+        border: none;
+        border-radius: 10px;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-bottom: 10px;
+        /* position: absolute; */
+        margin-top: auto;
+    }
+    .header-button:hover {
+        background-color: #3573f8; 
+    }
+    .header-text {
+        position: absolute; /* position absolute so that it stays within the header */
+        color: white;
+        font-size: 32px;
+        text-align: center;
+        animation: slidein 1.5s; /* animation for text */
+    }
+    /* animation keyframes */
+    @keyframes slidein {
+        from { left: -200px; } /* starting position */
+        to { left: 39%; } /* end position */
+    }
+    /* Responsive CSS */
+    @media (max-width: 800px) {
+      #header {
+        height: 400px;
+      }
+    }
+
+    #second-part {
+      background-image: linear-gradient(rgba(204, 65, 65, 0.8), rgba(22, 219, 209, 0.8)), url('pics/12.jpg');
+      background-size: cover; 
+      background-repeat: no-repeat; 
+      background-position: center;
+      padding: 50px; /* add some padding */
+    }
+    #second-part .card-container {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: center;
+    }
+    #second-part .card {
+      background-color: blanchedalmond;
+      width: 22%;
+      margin: 10px;
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      transition: 0.3s;
+      text-align: center; /* align text to center */
+      border-radius: 10px;
+      opacity: 50%;
+    }
+    #second-part .card:hover {
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+      opacity: 100%;
+      width: 26%;
+    }
+    #second-part .card img {
+      width: 100%;
+      height: auto; 
+      max-width:150px; 
+      max-height:150px;
+      display: block; /* add this to center the image */
+      margin: 0 auto; /* add this to center the image */
+    }
+    #second-part .card-text {
+      padding: 10px;
+      text-align: center;
+    }
+
+    #third-part {
+      text-align: center;
+      background-color: yellowgreen;
+      padding: 50px;
+    }
+    #third-part .third-part-title{
+      text-align: center; 
+      margin: 0 auto; 
+      display: inline-block;
+      padding: 50px;
+    }
+    #third-part .third-part-title:hover{
+      color: #3573f8;
+    }
+    #third-part .card-container {
+      display: flex;
+      flex-wrap: column;
+      justify-content: center;
+      align-items: center; /* this will center the items vertically */
+    }
+    #third-part .card {
+      background-color: #64bd52;
+      width: 30%;
+      margin: 10px;
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      transition: 0.3s;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* this will center the items horizontally */
+      border-radius: 10px;
+    }
+    .card-info {
+      position: absolute; 
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      text-align: center; /* align text to center */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #8fc87c;
+      transform: rotateY(-180deg); /* rotate the card-info by default */
+      transition: all 0.5s ease; /* transition for card-info */
+      display: none; 
+    }
+    .card-button {
+      margin-top: 5%;
+      background-color: rgb(48, 160, 182);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 10px;
+    }
+    .cardhover-text {
+      margin-top: 50%;
+    }
+    .card-button:hover {
+      background-color: rgb(87, 38, 176);
+    }
+    #third-part .card:hover {
+      transform: rotateY(0deg); 
+    }
+    #third-part .card:hover .card-info {
+      display: block;
+      transform: rotateY(0deg); 
+    }
+    .card-button:target , .popup-container {
+      /* width: 1800; 
+      height: 800; */
+      display: block;
+    }
+    #third-part .card img {
+      width: 100%;
+      height: auto;
+      object-fit: cover; /* this will make the image cover the entire width of the card */
+      /* margin: 10px 0; */
+      border-radius: 10px;
+    }
+    #third-part .card p {
+      padding: 10px;
+      text-align: center;
+    }
+
+    .popup-container {
+      display: flex;
+      position: fixed;
+      top: 0;
+      left: 0;
+      /* width: 0; 
+      height: 0;
+      overflow: hidden;  */
+      width: 100%; 
+      height: 100%;
+      display: none;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .popup-content {
+      position: absolute; 
+      top: 50%; 
+      left: 50%; 
+      transform: translate(-50%, -50%); 
+      width: 80%; 
+      height: auto; 
+      background-color: #fff; 
+      padding: 20px; 
+
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+    .popup-image-container {
+      width: 30%;
+    }
+    .popup-image {
+      width: 100%;
+    }
+    .popup-text-container {
+      /* display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center; */
+      width: 70%;
+      padding: 10px;
+    }
+    .popup-title {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .popup-description {
+      text-align: justify;
+      margin-bottom: 40px;
+    }
+    .popup-button {
+      font-size: 26px;
+      text-align: center;
+      cursor: pointer;
+      border-radius: 10px;
+      background-color: #bd41ac;
+    }
+    .popup-button:hover {
+      background-color: #41bda2;
+    }
+
+    .footer-container {
+      width: 100%; 
+      background-color: #333; 
+    }
+    .footer-col-1, .footer-col-2{
+      width: calc(50% - 10px); /* set width using calc function */
+      float: left; /* use float to position the column */
+      text-align: center; /* align the text to center */
+      
+    }
+    .footer-col-1 p, .footer-col-2 p{
+      display: inline-block; /* make the texts next by each other */
+      padding: 5px;
+    }
+    .footer-col-1 p:hover, .footer-col-2 p:hover {
+      color: wheat;
+    }
+    .footer-container::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+
+  </style> 
+</head> 
+<body>
+  <div class="menu-container">
+    <img src="pics/menu.png" class="menu">
+  </div>
+  <div class="overlay">
+    <div class="text">Hello World 1</div>
+    <div class="text">Hello World 2</div>
+    <div class="text">Hello World 3</div>
+  </div>
+  <div id="container">
+    <div id="header"> 
+      <h1 class="header-text">Mushi mush</h1>
+      <button class="header-button" href="#footer-container">Luffy</button> 
+    </div> 
+    <div id="second-part">
+      <div class="card-container">
+        <div class="card">
+          <img src="pics/css.png" alt="Card Image 1" class="card-img">
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor, magna id laoreet congue, magna augue bibendum ligula, eu aliquet augue risus id risus. </p>
+        </div>
+        <div class="card">
+          <img src="pics/http-logo.png" alt="Card Image 2" class="card-img">
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor, magna id laoreet congue, magna augue bibendum ligula, eu aliquet augue risus id risus. </p>
+        </div>
+        <div class="card">
+          <img src="pics/go-logo.png" alt="Card Image 3" class="card-img">
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor, magna id laoreet congue, magna augue bibendum ligula, eu aliquet augue risus id risus. </p>
+        </div>
+        <div class="card">
+          <img src="pics/javascript-logo.png" alt="Card Image 4" class="card-img">
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor, magna id laoreet congue, magna augue bibendum ligula, eu aliquet augue risus id risus. </p>
+        </div>
+      </div>
+    </div>
+    <div id="third-part">
+      <h2 class="third-part-title">Third Part Title</h2>
+      <div class="card-container">
+        <div class="card">
+          <img src="pics/12.jpg" alt="Card Image 1">
+          <p class="card-text-1">Card 1 Text 1</p>
+          <p class="card-text-2">Card 1 Text 2</p>
+          <p class="card-text-3">Card 1 Text 3</p>
+          <div class="card-info">
+            <p class="cardhover-text">Price: 8.44$</p>
+            <button class="card-button">Buy</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="pics/12.jpg" alt="Card Image 2">
+          <p class="card-text-1">Card 2 Text 1</p>
+          <p class="card-text-2">Card 2 Text 2</p>
+          <p class="card-text-3">Card 2 Text 3</p>
+          <div class="card-info">
+            <p class="cardhover-text">Price: 11$</p>
+            <button class="card-button">Buy</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="pics/12.jpg" alt="Card Image 3">
+          <p class="card-text-1">Card 3 Text 1</p>
+          <p class="card-text-2">Card 3 Text 2</p>
+          <p class="card-text-3">Card 3 Text 3</p>
+          <div class="card-info">
+            <p class="cardhover-text">Price: 5$</p>
+            <button class="card-button">Buy</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="footer-container">
+        <div class="footer-col-1">
+          <p>Text 1</p>
+          <p>Text 2</p>
+          <p>Text 3</p>
+          <p>Text 4</p>
+        </div>
+        <div class="footer-col-2">
+          <p>Text 5</p>
+          <p>Text 6</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <div class="popup-container">
+    <div class="popup-content">
+      <div class="popup-image-container">
+        <img class="popup-image" src="pics/5.jpg" alt="image">
+      </div>
+      <div class="popup-text-container">
+        <h1 class="popup-title">Title</h1>
+        <p class="popup-description">Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor, magna id laoreet congue, magna augue bibendum ligula, eu aliquet augue risus id risus.</p>
+        <button class="popup-button" onclick="location.href='https://www.amazon.com/gp/product/1491952024/';">Buy</button>
+      </div>
+    </div>
+  </div>
+</body> 
+</html>
+
+
+
+
+
+
